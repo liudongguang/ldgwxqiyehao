@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="wlhtHandler" class="com.wlht.controller.DataHandlerController"></bean>
+	<!-- 配置方法映射工厂类 -->
+	<bean id="jobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="wlhtHandler"></property>
+		<property name="targetMethod" value="wlthDRForTast"></property>
+		<property name="concurrent" value="false"></property>
+		<!-- concurrent : false表示等上一个任务执行完后再开启新的任务 -->
+	</bean>
+	<!-- 配置任务高度的的时间/周期 -->
+	<bean id="getTokenJobTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail"></property>
+		<!-- 每30秒执行：
+		<property name="cronExpression" value="0/30 * * * * ?"></property>
+        -->
+		<!--每天凌晨0点后1分执行-->
+		<property name="cronExpression" value="0 00 01 * * ?"></property>
+		<!-- 延时几毫秒后执行
+		<property name="startDelay" value="1000"></property>
+		 -->
+	</bean>
+	<bean id="schedulerFactoryBean" 
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="getTokenJobTrigger" />
+			</list>
+		</property>
+	</bean>
+</beans>
