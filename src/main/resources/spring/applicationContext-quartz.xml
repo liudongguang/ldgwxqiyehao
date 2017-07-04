@@ -4,12 +4,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="wlhtHandler" class="com.wlht.controller.DataHandlerController"></bean>
+	<bean id="wxToken" class="com.ldg.wx.utils.Access_token"></bean>
 	<!-- 配置方法映射工厂类 -->
 	<bean id="jobDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="wlhtHandler"></property>
-		<property name="targetMethod" value="wlthDRForTast"></property>
+		<property name="targetObject" ref="wxToken"></property>
+		<property name="targetMethod" value="init_Access_token"></property>
 		<property name="concurrent" value="false"></property>
 		<!-- concurrent : false表示等上一个任务执行完后再开启新的任务 -->
 	</bean>
@@ -20,8 +20,8 @@
 		<!-- 每30秒执行：
 		<property name="cronExpression" value="0/30 * * * * ?"></property>
         -->
-		<!--每天凌晨0点后1分执行-->
-		<property name="cronExpression" value="0 00 01 * * ?"></property>
+		<!-- 每隔一小时55分30秒执行一次： -->
+		<property name="cronExpression" value="30 55 */1 * * ?"></property>
 		<!-- 延时几毫秒后执行
 		<property name="startDelay" value="1000"></property>
 		 -->

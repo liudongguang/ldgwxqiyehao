@@ -23,9 +23,5 @@
 	<import resource="classpath:spring/applicationContext-jdbcTemplate.xml" />
 	<import resource="classpath:spring/applicationContext-redis.xml" />
 	<import resource="classpath:spring/applicationContext-service.xml" />
-
-   <!--
 	<import resource="classpath:spring/applicationContext-quartz.xml" />
-	-->
-
 </beans>
