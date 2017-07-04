@@ -1,9 +1,10 @@
 package com.ldg.wx.bo.in;
 
+import com.ldg.wx.constant.WeixinConstant;
+import com.ldg.wx.utils.WX_Util;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
-import com.weixin.constant.WeixinConstant;
-import com.weixin.util.WX_Util;
+
 
 public class WXInBasicMsg {
 	private String ToUserName; // 开发者微信号

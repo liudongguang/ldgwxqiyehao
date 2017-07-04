@@ -1,7 +1,8 @@
 package com.ldg.wx.bo.in;
 
-import com.weixin.constant.WeixinConstant;
-import com.weixin.util.WX_Util;
+
+import com.ldg.wx.constant.WeixinConstant;
+import com.ldg.wx.utils.WX_Util;
 
 public class WX_Voice extends WXInBasicMsg {
 	private String Format; // 语音格式，如amr，speex等

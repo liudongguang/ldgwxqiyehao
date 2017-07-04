@@ -1,7 +1,8 @@
 package com.ldg.wx.bo.in;
 
-import com.weixin.constant.WeixinConstant;
-import com.weixin.util.WX_Util;
+
+import com.ldg.wx.constant.WeixinConstant;
+import com.ldg.wx.utils.WX_Util;
 
 public class WX_Image extends WXInBasicMsg {
 	private String PicUrl; // 图片链接（由系统生成）

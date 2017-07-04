@@ -1,7 +1,8 @@
 package com.ldg.wx.bo.in;
 
-import com.weixin.constant.WeixinConstant;
-import com.weixin.util.WX_Util;
+
+import com.ldg.wx.constant.WeixinConstant;
+import com.ldg.wx.utils.WX_Util;
 
 public class WX_Text extends WXInBasicMsg {
 	private String Content; // 文本消息内容

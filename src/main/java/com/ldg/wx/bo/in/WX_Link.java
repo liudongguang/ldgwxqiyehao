@@ -1,7 +1,8 @@
 package com.ldg.wx.bo.in;
 
-import com.weixin.constant.WeixinConstant;
-import com.weixin.util.WX_Util;
+
+import com.ldg.wx.constant.WeixinConstant;
+import com.ldg.wx.utils.WX_Util;
 
 public class WX_Link extends WXInBasicMsg {
 	private String Title; // 消息标题
