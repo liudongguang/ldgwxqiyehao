@@ -38,4 +38,10 @@ public class LdgRequestUtil {
         return ip;
     }
 
+    public static String getFullJspPath(HttpServletRequest request, String jspPath) {
+        StringBuffer url = request.getRequestURL();
+        String tempContextUrl = url.delete(url.length() - request.getRequestURI().length(), url.length()).append(request.getServletContext().getContextPath()).append(jspPath).toString();
+        return tempContextUrl.toString();
+    }
+
 }
