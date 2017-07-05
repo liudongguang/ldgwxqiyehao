@@ -43,5 +43,6 @@ public class JSSDKTicket {
 		return "Ticket [errcode=" + errcode + ", errmsg=" + errmsg + ", ticket=" + ticket + ", expires_in=" + expires_in
 				+ "]";
 	}
-
 }
+
+

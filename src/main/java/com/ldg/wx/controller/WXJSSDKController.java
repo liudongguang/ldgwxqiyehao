@@ -8,6 +8,8 @@ import com.ldg.wx.utils.JSSDK_Sign;
 import com.ldg.wx.utils.PropertiesUtil;
 import com.ldg.wx.utils.WX_Util;
 import com.ldg.wx.utils.wxaes.AesException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,12 +25,15 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/jssdk")
 public class WXJSSDKController {
+    private static Logger logger = LoggerFactory.getLogger(WXJSSDKController.class);
     @RequestMapping(value = "/jumpToPage")
     public String test1(HttpServletRequest request, HttpServletResponse response,String redirectURL) {
         String ticket = Access_token.getJsapi_ticket();
         Map<String, String> ret = JSSDK_Sign.sign(ticket, LdgRequestUtil.getFullJspPath(request,redirectURL));
         ret.put("appId", PropertiesUtil.weixinPropertiesVal(WeixinConstant.WX_CORPID));
         request.setAttribute("sign",ret);
+        logger.debug(redirectURL);
+        logger.debug(LdgRequestUtil.getFullJspPath(request,redirectURL));
         return redirectURL;
     }
 }
