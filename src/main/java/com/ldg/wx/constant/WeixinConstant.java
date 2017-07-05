@@ -19,6 +19,8 @@ public interface WeixinConstant {
 	String WXINKF_ENCODINGAESKEY = "inkf_EncodingAESKey";
 	String WXKF_TOKF = "sendToKF";
 	///////////////////////
+	int response_rs_success=200;
+	String response_rs_err="";
 
 	///////// 会话
 	String WXHUIHUA_PARAM_TOKEN = "huihua_token";
@@ -62,6 +64,8 @@ public interface WeixinConstant {
 	String IN_TEXT_Content = "Content";
 
 	String IN_Encrypt = "Encrypt";
+
+
 
 	String IN_IMAGE_PICURL = "PicUrl";
 

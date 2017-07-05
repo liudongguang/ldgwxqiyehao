@@ -108,6 +108,21 @@ public class WX_Util {
 				|| WeixinConstant.IN_COMM_EVENT_LOCATION_Precision.equals(tagName)) {
 			needCDATAFlag = false;// 不需要cdata
 		}
+		return getXMLCDATA( reqeustStr,tagName,needCDATAFlag);
+	}
+
+	/**
+	 *
+	 * @param reqeustStr
+	 * @param tagName
+	 * @param needCDATAFlag
+	 * @return
+	 */
+	public static String getXMLCDATA(String reqeustStr, String tagName,boolean needCDATAFlag) {
+		if (reqeustStr.indexOf(tagName) == -1) {
+			System.out.println("无此标签！" + tagName);
+			return null;
+		}
 		// 开始标签
 		StringBuilder beginTageName = new StringBuilder("<");
 		// 结束标签
@@ -126,7 +141,6 @@ public class WX_Util {
 		String rtStr = reqeustStr.substring(beginIndex, endIndex);
 		return rtStr;
 	}
-
 	// out输出
 	public static void print(String source, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
@@ -136,4 +150,15 @@ public class WX_Util {
 		out.flush();
 		out.close();
 	}
+
+	// out输出
+	public static void print200(HttpServletResponse response) throws IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setStatus(WeixinConstant.response_rs_success);
+		PrintWriter out = response.getWriter();
+		out.print(WeixinConstant.response_rs_err);
+		out.flush();
+		out.close();
+	}
+
 }
