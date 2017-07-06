@@ -19,7 +19,7 @@
 <input type="hidden" id="signature" value="${sign.signature}"/>
 <button id="xiangceID">相册</button>
 </body>
-<script language="javascript" type="text/javascript" src="assets/js/wxjssdk.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/jweixin-1.2.0.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jquery3.2.1.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jssdktest/test1.js"></script>
 </html>
