@@ -1,5 +1,7 @@
 package com.ldg.wx.utils;
 
+import com.ldg.wx.constant.WeixinConstant;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,66 +16,52 @@ public class JSSDK_Sign {
 
 		// 注意 URL 一定要动态获取，不能 hardcode
 		String url = "http://example.com";
-		Map<String, String> ret = sign(jsapi_ticket, url);
+		Map<String, String> ret = sign(url);
 		for (Map.Entry entry : ret.entrySet()) {
 			System.out.println(entry.getKey() + ", " + entry.getValue());
 		}
 	};
-
-	public static Map<String, String> sign(String jsapi_ticket, String url) {
-		Map<String, String> ret = new HashMap<String, String>();
-		String nonce_str = create_nonce_str();
-		String timestamp = create_timestamp();
-		StringBuilder string1 = new StringBuilder();
+    private static String getSignature(String tempStr){
 		String signature = "";
-		// 注意这里参数名必须全部小写，且必须有序
-		string1.append("jsapi_ticket=").append(jsapi_ticket).append("&noncestr=").append(nonce_str)
-				.append("&timestamp=").append(timestamp).append("&url=").append(url);
 		try {
 			MessageDigest crypt = MessageDigest.getInstance("SHA-1");
 			crypt.reset();
-			crypt.update(string1.toString().getBytes("UTF-8"));
+			crypt.update(tempStr.toString().getBytes("UTF-8"));
 			signature = byteToHex(crypt.digest());
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-		// ret.put("url", url);
-		// ret.put("jsapi_ticket", jsapi_ticket);
+		return signature;
+	}
+	public static Map<String, String> sign(String url) {
+		Map<String, String> ret = new HashMap<String, String>();
+		String nonce_str = create_nonce_str();
+		String timestamp = create_timestamp();
+		StringBuilder string1 = new StringBuilder();
+		// 注意这里参数名必须全部小写，且必须有序
+		string1.append("jsapi_ticket=").append(Access_token.getJsapi_ticket()).append("&noncestr=").append(nonce_str)
+				.append("&timestamp=").append(timestamp).append("&url=").append(url);
+		ret.put("appId", PropertiesUtil.weixinPropertiesVal(WeixinConstant.WX_CORPID));
 		ret.put("nonceStr", nonce_str);
 		ret.put("timestamp", timestamp);
-		ret.put("signature", signature);
+		ret.put("signature", getSignature(string1.toString()));
 		return ret;
 	}
 
-	public static Map<String, String> signGroupTicket(String group_ticket, String url) {
+	public static Map<String, String> signGroupTicket(String url) {
 		Map<String, String> ret = new HashMap<String, String>();
 		String nonce_str = create_nonce_str();
 		String timestamp = create_timestamp();
 		StringBuilder string1 = new StringBuilder();
-		String signature = "";
 		// 注意这里参数名必须全部小写，且必须有序
-		string1.append("group_ticket=").append(group_ticket).append("&noncestr=").append(nonce_str)
+		string1.append("group_ticket=").append(Access_token.getGroup().getTicket()).append("&noncestr=").append(nonce_str)
 				.append("&timestamp=").append(timestamp).append("&url=").append(url);
-		try {
-			MessageDigest crypt = MessageDigest.getInstance("SHA-1");
-			crypt.reset();
-			crypt.update(string1.toString().getBytes("UTF-8"));
-			signature = byteToHex(crypt.digest());
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-
-		// ret.put("url", url);
-		// ret.put("group_ticket", group_ticket);
 		ret.put("nonceStr", nonce_str);
 		ret.put("timestamp", timestamp);
-		ret.put("signature", signature);
-
+		ret.put("signature",  getSignature(string1.toString()));
+		ret.put("appId", PropertiesUtil.weixinPropertiesVal(WeixinConstant.WX_CORPID));
 		return ret;
 	}
 
@@ -93,5 +81,21 @@ public class JSSDK_Sign {
 
 	private static String create_timestamp() {
 		return Long.toString(System.currentTimeMillis() / 1000);
+	}
+
+	public static String signForParam(String url) {
+		String nonce_str = create_nonce_str();
+		String timestamp = create_timestamp();
+		StringBuilder string1 = new StringBuilder();
+		// 注意这里参数名必须全部小写，且必须有序
+		string1.append("jsapi_ticket=").append(Access_token.getJsapi_ticket()).append("&noncestr=").append(nonce_str)
+				.append("&timestamp=").append(timestamp).append("&url=").append(url);
+		String signature=getSignature(string1.toString());
+		StringBuilder rsStr=new StringBuilder();
+		rsStr.append("appId=").append(PropertiesUtil.weixinPropertiesVal(WeixinConstant.WX_CORPID));
+		rsStr.append("&timestamp=").append(timestamp);
+		rsStr.append("&nonceStr=").append(nonce_str);
+		rsStr.append("&signature=").append(signature);
+		return  rsStr.toString();
 	}
 }

@@ -1,10 +1,7 @@
 package com.ldg.wx.controller;
 
 import com.ldg.base.api.util.LdgRequestUtil;
-import com.ldg.wx.constant.WeixinConstant;
-import com.ldg.wx.utils.Access_token;
 import com.ldg.wx.utils.JSSDK_Sign;
-import com.ldg.wx.utils.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -23,12 +20,12 @@ public class WXJSSDKController {
     private static Logger logger = LoggerFactory.getLogger(WXJSSDKController.class);
     @RequestMapping(value = "/jumpToPage")
     public String test1(HttpServletRequest request, HttpServletResponse response,String redirectURL) {
-        String ticket = Access_token.getJsapi_ticket();
-        Map<String, String> ret = JSSDK_Sign.sign(ticket, LdgRequestUtil.getFullJspPath(request,redirectURL));
-        ret.put("appId", PropertiesUtil.weixinPropertiesVal(WeixinConstant.WX_CORPID));
-        request.getSession().setAttribute("sign",ret);
-        logger.debug(redirectURL);
-        logger.debug(LdgRequestUtil.getFullJspPath(request,redirectURL));
-        return "redirect:"+redirectURL;
+        StringBuilder url=new StringBuilder();
+        url.append(request.getRequestURL()).append(LdgRequestUtil.getParamsStr(request));
+        Map<String,String> ret= JSSDK_Sign.sign(url.toString());
+        request.setAttribute("sign",ret);
+        //logger.debug(url.toString());
+        //logger.debug(redirectURL);
+        return redirectURL;
     }
 }

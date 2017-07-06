@@ -44,4 +44,20 @@ public class LdgRequestUtil {
         return tempContextUrl.toString();
     }
 
+    public static String getParamsStr(HttpServletRequest request) {
+        final Boolean[] first = {true};
+        StringBuilder sbd = new StringBuilder();
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        parameterMap.forEach((String k, String[] v) -> {
+            if (first[0]) {
+                first[0] = false;
+                sbd.append("?");
+            } else {
+                sbd.append("&");
+            }
+            sbd.append(k).append("=").append(v[0]);
+        });
+        return sbd.toString();
+    }
+
 }
