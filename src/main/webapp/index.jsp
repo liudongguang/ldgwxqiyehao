@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width">
 </head>
   <body>
-    <a href="jssdk/jumpToPage?redirectURL=/jssdktest/test1.jsp">jssdk1</a>
+    <a href="jssdk/jumpToPage?redirectURL=/jssdktest/test1.jsp">jssdk1</a><br/>
+    <a href="jssdk/jumpToPage?redirectURL=/jssdktest/test2.jsp">聊天</a><br/>
   </body>
 </html>

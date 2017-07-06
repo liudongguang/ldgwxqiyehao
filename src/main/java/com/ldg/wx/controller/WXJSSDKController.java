@@ -21,7 +21,7 @@ public class WXJSSDKController {
     @RequestMapping(value = "/jumpToPage")
     public String test1(HttpServletRequest request, HttpServletResponse response,String redirectURL) {
         StringBuilder url=new StringBuilder();
-        url.append(request.getRequestURL()).append(LdgRequestUtil.getParamsStr(request));
+        url.append(request.getRequestURL()).append(LdgRequestUtil.getParamsStr(request));//把参数放进去
         Map<String,String> ret= JSSDK_Sign.sign(url.toString());
         request.setAttribute("sign",ret);
         //logger.debug(url.toString());
