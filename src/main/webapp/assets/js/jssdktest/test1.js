@@ -49,6 +49,12 @@ jQuery(document).ready(function () {
                 }
             });
         });
+        $("#imagesID").click(function () {
+            wx.previewImage({
+                current: 'http://astelaya.cn/assets/imges/sbl.png', // 当前显示图片的http链接
+                urls: ['http://astelaya.cn/assets/imges/ali.jpg','http://astelaya.cn/assets/imges/byyl.png'] // 需要预览的图片http链接列表
+            });
+        });
     });
     wx.error(function (res) {
         // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。

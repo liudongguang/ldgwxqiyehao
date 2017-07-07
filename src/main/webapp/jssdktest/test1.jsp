@@ -17,7 +17,8 @@
 <input type="hidden" id="nonceStr" value="${sign.nonceStr}"/>
 <input type="hidden" id="timestamp" value="${sign.timestamp}"/>
 <input type="hidden" id="signature" value="${sign.signature}"/>
-<button id="xiangceID">相册</button>
+<button id="xiangceID">打开相册</button>
+<button id="imagesID">图片展示</button>
 </body>
 <script language="javascript" type="text/javascript" src="assets/js/jweixin-1.2.0.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jquery3.2.1.js"></script>
