@@ -1,6 +1,5 @@
 package com.ldg.pajax.filter;
 
-import com.ldg.base.api.constant.SysConstant;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -14,6 +13,7 @@ import java.io.IOException;
  */
 public class PajaxReqestFilter extends OncePerRequestFilter {
     private final static String pajaxState="X-PJAX";
+    private final static String forwordPath="/pajaxtest/index.jsp?isRedirect=true";
     private String checkPath;
 
     public static String getPajaxState() {
@@ -30,11 +30,13 @@ public class PajaxReqestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        //是pajax标识，不是index页面
-        if((!SysConstant.pajaxtrue.equals(request.getHeader(pajaxState)))&&request.getRequestURL().indexOf("a.jsp")!=-1){
-            request.getRequestDispatcher("/pajaxtest/index.jsp?isRedirect=true").forward(request,response);
-        }else{
-            filterChain.doFilter(request, response);//不执行过滤,继续执行操作
-        }
+
+//        if(SysConstant.pajaxtrue.equals(request.getHeader(pajaxState))){
+//            request.getRequestDispatcher(forwordPath).forward(request,response);
+//        }else{
+//            filterChain.doFilter(request, response);//不执行过滤,继续执行操作
+//        }
+
+        filterChain.doFilter(request, response);//不执行过滤,继续执行操作
     }
 }

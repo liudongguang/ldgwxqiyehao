@@ -4,3 +4,17 @@
 .fuMenu{
     margin-bottom: 0px;
 }
+.table_bt_cz{
+    width: 48px;
+    height: 23px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.table_btspan_cz{
+    position: relative;
+    left: 0px;
+    top:-5px;
+}
+.margin-bottom10{
+    margin-bottom: 10px;
+}

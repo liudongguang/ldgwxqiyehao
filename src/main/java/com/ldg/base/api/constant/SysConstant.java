@@ -19,5 +19,6 @@ public interface SysConstant {
     int searchTYPE_HanZi=3;
     String sessionUSER="user";
     String pajaxtrue="true";
+    String datalist="list";
 
 }
