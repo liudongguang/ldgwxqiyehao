@@ -101,6 +101,7 @@ public interface WeixinConstant {
 
 	String getEmployeeByDepartMentID = "getEmployeeByDepartMentID";
 	String GETXIANGXIEMPLOYEEBYDEPARTMENTID = "getXiangxiEmployeeByDepartMentID";
+	String getUserinfoByUserid="getUserinfoByUserid";
 	//////获取临时素材
 	String getLinShiSC="getLinShiSC";
 	String TYPE_jpeg="image/jpeg";
