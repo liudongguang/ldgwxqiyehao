@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/bootstrap4.0.0-beta/css/bootstrap.css"/>
     <link rel="stylesheet" href="assets/menu/css/menu.css"/>
     <link rel="stylesheet" href="assets/menu/css/public.css"/>
+    <link rel="stylesheet" href="assets/nprogress-0.2.0/nprogress.css"/>
     <link rel="stylesheet" href="assets/css/index_fix.css"/>
 </head>
 <body>
@@ -58,11 +59,11 @@
                     <div class="menu_list">
                         <ul>
                             <li class="lis">
-                                <p class="fuMenu">武汉名吃</p>
+                                <p id="defaultDisplay" class="fuMenu">武汉名吃</p>
                                 <img class="xiala" src="assets/menu/img/xiala.png"/>
                                 <div class="div1">
-                                    <p class="zcd" id="zcd1">老通城的三鲜豆皮</p>
-                                    <p class="zcd" id="zcd2">四季美的汤包</p>
+                                    <p class="zcd" id="zcd1" href="pajaxtest/a.jsp">老通城的三鲜豆皮</p>
+                                    <p class="zcd" id="zcd2" href="pajaxtest/b.jsp">四季美的汤包</p>
                                     <p class="zcd" id="zcd3">蔡林记的热干面</p>
                                     <p class="zcd" id="zcd4">顺香居的烧麦</p>
                                     <p class="zcd" id="zcd5">福庆和的牛肉豆丝</p>
@@ -100,5 +101,9 @@
 <script language="javascript" type="text/javascript" src="assets/menu/js/menu.js"></script>
 <script language="javascript" type="text/javascript" src="assets/bootstrap4.0.0-beta/popper.js"></script>
 <script language="javascript" type="text/javascript" src="assets/bootstrap4.0.0-beta/js/bootstrap.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/pajax/jquery.pjax.js"></script>
+<script language="javascript" type="text/javascript" src="assets/nprogress-0.2.0/nprogress.js"></script>
+<script language="javascript" type="text/javascript" src="assets/layer/layer.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxtest/index.js"></script>
 </body>
 </html>
