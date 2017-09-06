@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="assets/css/index_fix.css"/>
 </head>
 <body>
+<input type="hidden" value="${param.isRedirect}" id="isRedirect"/>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Dashboard</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -94,7 +95,7 @@
                 <!-- 菜单-结束 -->
             </div>
         </div>
-        <div class="col-md-10" id="pajaxMainContainer"></div>
+        <div class="col-md-10" id="pajaxMainContainer" style="padding: 100px"></div>
     </div>
 </div>
 <script language="javascript" type="text/javascript" src="assets/js/jquery3.2.1.js"></script>
