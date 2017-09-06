@@ -25,10 +25,6 @@ $(document).on('pjax:timeout', function (event) {
     layer.alert("请求超时！");
 })
 /////////////////////////////////////////////////////
-var pajaxOptions={
-    type: "post",
-    timeout:3000
-}
 function pajaxRequest(url,continerID) {
-    $.pjax({url: url, container: continerID,options:pajaxOptions})
+    $.pjax({url: url, container: continerID,type: "post",timeout:3000})
 }
