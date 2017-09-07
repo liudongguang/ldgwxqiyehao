@@ -21,4 +21,5 @@ public interface SysConstant {
     String pajaxtrue="true";
     String datalist="list";
 
+    String rsInfo="rsInfo";
 }

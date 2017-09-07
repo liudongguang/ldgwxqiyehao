@@ -110,4 +110,7 @@ public interface WeixinConstant {
 	String uploadPath_liuyan="liuyanbanIMG";
 	String session_wxUSER="session_wxUSER";
 	String session_WXDepartment="session_WXDepartment";
+    String addDepart="addDepart";//增加部门
+	String delDepart="delDepart";//删除部门
+    String updateDepart="updateDepart";//更新部门;
 }

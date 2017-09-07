@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
     $(document).on('pjax:send', function () {
         NProgress.set(0.3);
         loadIndex = layer.load(0, {
-            shade: [0.1, '#fff']
+            shade: [0.6, '#fff']
         });
     })
     $(document).on('pjax:complete', function () {

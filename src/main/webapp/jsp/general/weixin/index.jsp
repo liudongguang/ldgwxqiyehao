@@ -65,7 +65,7 @@
                                 <div class="div1">
                                     <p class="zcd" id="zcd1" href="pajaxwx/getDepart">部门管理</p>
                                     <p class="zcd" id="zcd2" href="pajaxtest/b.jsp">四季美的汤包</p>
-                                    <p class="zcd" id="zcd3">蔡林记的热干面</p>
+                                    <p class="zcd" id="zcd3" href="pajaxwx/getDepart22">蔡林记的热干面</p>
                                     <p class="zcd" id="zcd4">顺香居的烧麦</p>
                                     <p class="zcd" id="zcd5">福庆和的牛肉豆丝</p>
                                     <p class="zcd" id="zcd6">小桃园的煨汤</p>
