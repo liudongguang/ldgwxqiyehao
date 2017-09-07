@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<button class="btn btn-outline-info float-right margin-bottom10">新增部门</button>
+<button id="addDepart" class="btn btn-outline-info float-right margin-bottom10" pajax-data>新增部门</button>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -20,4 +20,12 @@
     </c:forEach>
     </tbody>
 </table>
+
+<script language="javascript" type="text/javascript">
+    jQuery.ajax({
+        url: "assets/js/jsp/pajax/weixin/departList.js",
+        dataType: "script",
+        cache: true
+    })
+</script>
 
